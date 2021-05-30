@@ -7,7 +7,7 @@
 
  // Tipos Compostos Arrays e Objetos
 
- // $frutas = array("abacaxi", "laranja", "manga", "banana", "maçã");
+ // $frutas = array("abacaxi", "banana", "laranja", "manga", "mamão", "maçã");
 
  // echo $frutas[2];
 
