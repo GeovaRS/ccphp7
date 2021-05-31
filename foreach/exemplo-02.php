@@ -11,10 +11,14 @@
  </head>
  <body>
   <form>
-   <input type="text" name="nome" /><br />
-   <input type="date" name="nascimento" /><br />
+   <label for="nome">Nome:</label>
+   <input type="text" name="nome" id="nome" placeholder="Digite o Nome" /><br />
+   <label for="nascimento">Data de Nascimento:</label>
+   <input type="date" name="nascimento" id="nascimento"
+   placeholder="Digite a Data de Nascimento" /><br />
    <input type="submit" value="OK" />
   </form>
+  <hr />
 
   <?php
    if(isset($_GET)) {
