@@ -8,5 +8,8 @@
  $frase = ola();
  echo strlen($frase);
 
- // Tente sempre fazer um código mais abstrato possível
+ // Tentar sempre códigos mais abstratos possíveis
+ // Toda função precisa retornar um valor
+ // Se retorne valor conceitualmente é procedimento/sub-rotina.
+ // Procedimento só executa alguma coisa sem retorno do processamento interno.
 ?>
