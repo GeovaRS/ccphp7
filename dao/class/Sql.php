@@ -6,7 +6,7 @@
  // Os Sistemas desenvolvidos só olham para as Classes PHP.
  // Segurança na execução das transações.
  // Isolamento de informações Armazenadas no Banco de Dados MySQL
- // Herança Métodos e Controles, Polimorfismo, Encapsulamento Gettes e Setters.
+ // Herança Métodos e Controles, Polimorfismo, Encapsulamento Getters e Setters.
  // Praticar os Conceitos abordados até aqui do Paradigma POO.
  // Para esse código rodar incluir a senha do usuário root do seu MySQL Local.
  // Caso seja um outro usuário Alterar para ele, junto com a senha.
