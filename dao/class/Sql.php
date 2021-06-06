@@ -8,22 +8,24 @@
  // Isolamento de informações Armazenadas no Banco de Dados MySQL
  // Herança Métodos e Controles, Polimorfismo, Encapsulamento Gettes e Setters.
  // Praticar os Conceitos abordados até aqui do Paradigma POO.
+ // Para esse código rodar incluir a senha do usuário root do seu MySQL Local.
+ // Caso seja um outro usuário Alterar para ele, junto com a senha.
 
  class Sql extends PDO {
   private $conn;
 
   public function __construct() {
-   $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "");
+   $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "arGus@6345#RS");
   }
 
-  private function setParams($statment, $parameters = array()) {
+  private function setParams($statement, $parameters = array()) {
    foreach($parameters as $key => $value) {
-    $this->setParam($statment, $key, $value);
+    $this->setParam($statement, $key, $value);
    }
   }
 
-  private function setParam($statment, $key, $value) {
-   $statment->bindParam($key, $value);
+  private function setParam($statement, $key, $value) {
+   $statement->bindParam($key, $value);
   }
 
   // Correção deste Método foi dada pelo aluno HCode Davi
