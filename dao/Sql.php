@@ -13,7 +13,7 @@
   private $conn;
 
   public function __construct() {
-   $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "arGus@6345#RS");
+   $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "");
   }
 
   private function setParams($statment, $parameters = array()) {
