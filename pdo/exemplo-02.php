@@ -1,7 +1,7 @@
 <?php
  // DSN - Data Search Name - Microsft SQLServer Express
  $conn=new PDO(
-  "sqlsrv:database=dbphp7;server=localhost\SQLEXPRESS;ConnectionPooling=0", "sa", "root");
+  "sqlsrv:database=dbphp7;server=localhost\SQLEXPRESS;ConnectionPooling=0", "sa", "");
 
   $stmt = $conn->prepare("SELECT * FROM tb_usuarios ORDER BY deslogin");
 
