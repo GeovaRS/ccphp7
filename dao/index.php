@@ -20,7 +20,18 @@
  // echo json_encode($search);
 
  // Carregar/Exibir um Usuário com Login e Senha
- $usuario = new Usuario();
- $usuario->login("root", "!@#$%");
- echo $usuario;
+ // $usuario = new Usuario();
+ // $usuario->login("root", "!@#$%");
+ // echo $usuario;
+
+ // Inserir Usuário aluno
+ // $aluno = new Usuario();
+ // $aluno->setDesLogin("aluno");
+ // $aluno->setDesSenha("@lun0");
+ // $aluno->insert();
+ // echo $aluno;
+
+ // $aluno = new Usuario("aluno", "@lun0");
+ // $aluno->insert();
+ // echo $aluno;
 ?>

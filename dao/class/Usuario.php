@@ -5,6 +5,11 @@
   private $desSenha;
   private $dtCadastro;
 
+  public function __construct($login = "", $password = "") {
+   $this->setDesSenha($login);
+   $this->setDesSenha($password);
+  }
+
   public function getIdUsuario() {
    return $this->idUsuario;
   }
@@ -44,11 +49,13 @@
    array(":ID"=>$id));
    // if(isset($results[0])) {}
    if(count($results) > 0) {
-    $row = $results[0];
-    $this->setIdUsuario($row['idusuario']);
-    $this->setDesLogin($row['deslogin']);
-    $this->setDesSenha($row['dessenha']);
-    $this->setDtCadastro(new DateTime($row['dtcadastro']));
+    // $row = $results[0];
+    // $this->setIdUsuario($row['idusuario']);
+    // $this->setDesLogin($row['deslogin']);
+    // $this->setDesSenha($row['dessenha']);
+    // $this->setDtCadastro(new DateTime($row['dtcadastro']));
+
+    $this->setData($results[0]);
    }
   }
 
@@ -71,13 +78,34 @@
     ":PASSWORD"=>$password));
    // if(isset($results[0])) {}
    if(count($results) > 0) {
-    $row = $results[0];
-    $this->setIdUsuario($row['idusuario']);
-    $this->setDesLogin($row['deslogin']);
-    $this->setDesSenha($row['dessenha']);
-    $this->setDtCadastro(new DateTime($row['dtcadastro']));
+    // $row = $results[0];
+    // $this->setIdUsuario($row['idusuario']);
+    // $this->setDesLogin($row['deslogin']);
+    // $this->setDesSenha($row['dessenha']);
+    // $this->setDtCadastro(new DateTime($row['dtcadastro']));
+
+    $this->setData($results[0]);
    } else {
     throw new Exception("Login e/ou senha inválidos.");
+   }
+  }
+
+  public function setData($data) {
+   $this->setIdUsuario($data['idusuario']);
+   $this->setDesLogin($data['deslogin']);
+   $this->setDesSenha($data['dessenha']);
+   $this->setDtCadastro(new DateTime($data['dtcadastro']));
+  }
+
+  public function insert() {
+   $sql = new Sql();
+   $results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
+    ":LOGIN"=>$this->getDesLogin(),
+    ":PASSWORD"=>$this->getDesSenha()
+   ));
+
+   if(count($results) > 0) {
+    $this->setData($results[0]);
    }
   }
 
