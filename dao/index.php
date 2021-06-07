@@ -43,8 +43,8 @@
  // echo $usuario;
 
  // Excluir um Usuário
- $usuario = new Usuario();
- $usuario->loadById(4);
- $usuario->delete();
- echo $usuario;
+ // $usuario = new Usuario();
+ // $usuario->loadById(4);
+ // $usuario->delete();
+ // echo $usuario;
 ?>
