@@ -31,7 +31,14 @@
  // $aluno->insert();
  // echo $aluno;
 
+ // Inserir um Novo Usuário
  // $aluno = new Usuario("aluno", "@lun0");
  // $aluno->insert();
  // echo $aluno;
+
+ // Alterar um Usuario
+ // $usuario = new Usuario();
+ // $usuario->loadById(4);
+ // $usuario->update("professor", "!@#$%");
+ // echo $usuario;
 ?>

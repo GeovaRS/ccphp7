@@ -42,6 +42,22 @@
    $this->dtCadastro = $value;
   }
 
+  public function getData() {
+   return json_encode(array(
+    "idusuario"=>$this->getIdUsuario(),
+    "deslogin"=>$this->getDesLogin(),
+    "dessenha"=>$this->getDesSenha(),
+    "dtcadastro"=>$this->getDtCadastro()->format("d/m/Y H:i:s")
+   ));
+  }
+
+  public function setData($data) {
+   $this->setIdUsuario($data['idusuario']);
+   $this->setDesLogin($data['deslogin']);
+   $this->setDesSenha($data['dessenha']);
+   $this->setDtCadastro(new DateTime($data['dtcadastro']));
+  }
+
   public function loadById($id) {
    $sql = new Sql();
 
@@ -90,13 +106,6 @@
    }
   }
 
-  public function setData($data) {
-   $this->setIdUsuario($data['idusuario']);
-   $this->setDesLogin($data['deslogin']);
-   $this->setDesSenha($data['dessenha']);
-   $this->setDtCadastro(new DateTime($data['dtcadastro']));
-  }
-
   public function insert() {
    $sql = new Sql();
    $results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
@@ -109,13 +118,29 @@
    }
   }
 
-  public function __toString() {
-   return json_encode(array(
-    "idusuario"=>$this->getIdUsuario(),
-    "deslogin"=>$this->getDesLogin(),
-    "dessenha"=>$this->getDesSenha(),
-    "dtcadastro"=>$this->getDtCadastro()->format("d/m/Y H:i:s")
+  public function update($login, $password) {
+   $this->setDesLogin($login);
+   $this->setDesSenha($password);
+
+   $sql = new Sql();
+
+   $sql->execQuery("UPDATE tb_usuarios
+   SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
+    ':ID'=>$this->getIdUsuario(),
+    ':LOGIN'=>$this->getDesLogin(),
+    ':PASSWORD'=>$this->getDesSenha()
    ));
+  }
+
+  public function __toString() {
+   // return json_encode(array(
+   //  "idusuario"=>$this->getIdUsuario(),
+   //  "deslogin"=>$this->getDesLogin(),
+   //  "dessenha"=>$this->getDesSenha(),
+   //  "dtcadastro"=>$this->getDtCadastro()->format("d/m/Y H:i:s")
+   // ));
+
+   return $this->getData();
   }
  }
 ?>
