@@ -41,4 +41,10 @@
  // $usuario->loadById(4);
  // $usuario->update("professor", "!@#$%");
  // echo $usuario;
+
+ // Excluir um Usuário
+ $usuario = new Usuario();
+ $usuario->loadById(4);
+ $usuario->delete();
+ echo $usuario;
 ?>

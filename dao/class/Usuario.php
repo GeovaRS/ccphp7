@@ -83,15 +83,15 @@
   public static function search($login) {
    $sql = new Sql();
    return $sql->select("SELECT * FROM tb_usuarios WHERE deslogin
-   LIKE :SEARCH ORDER BY deslogin", array(":SEARCH"=>"%".$login."%"));
+   LIKE :SEARCH ORDER BY deslogin", array(':SEARCH'=>"%".$login."%"));
   }
 
   public function login($login, $password) {
    $sql = new Sql();
    $results = $sql->select("SELECT * FROM tb_usuarios
    WHERE deslogin = :LOGIN and dessenha = :PASSWORD", array(
-    ":LOGIN"=>$login,
-    ":PASSWORD"=>$password));
+    ':LOGIN'=>$login,
+    ':PASSWORD'=>$password));
    // if(isset($results[0])) {}
    if(count($results) > 0) {
     // $row = $results[0];
@@ -109,8 +109,8 @@
   public function insert() {
    $sql = new Sql();
    $results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
-    ":LOGIN"=>$this->getDesLogin(),
-    ":PASSWORD"=>$this->getDesSenha()
+    ':LOGIN'=>$this->getDesLogin(),
+    ':PASSWORD'=>$this->getDesSenha()
    ));
 
    if(count($results) > 0) {
@@ -130,6 +130,17 @@
     ':LOGIN'=>$this->getDesLogin(),
     ':PASSWORD'=>$this->getDesSenha()
    ));
+  }
+
+  public function delete() {
+   $sql = new Sql();
+   $sql->execQuery("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+    ':ID'=>$this->getIdUsuario()
+   ));
+   $this->setIdUsuario(0);
+   $this->setDesLogin("");
+   $this->setDesSenha("");
+   $this->setDtCadastro(new DateTime());
   }
 
   public function __toString() {
