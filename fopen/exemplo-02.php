@@ -12,14 +12,14 @@
   // print_r($headers);
  }
  $file = fopen("usuarios.csv", "w+");
- fwrite($file, implode(",", $headers) . "\r\n");
+ fwrite($file, implode(",", $headers) . "\n");
 
  foreach($usuarios as $row) {
   $data = array();
   foreach($row as $key => $value) {
    array_push($data, $value);
   } // End foreach de Coluna
-  fwrite($file, implode(",", $data) . "\r\n");
+  fwrite($file, implode(",", $data) . "\n");
  } // End foreach de Linha
 
  fclose($file);
